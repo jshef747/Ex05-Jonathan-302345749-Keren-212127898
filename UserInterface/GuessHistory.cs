@@ -1,4 +1,4 @@
-﻿namespace Logic;
+﻿namespace BoolPgia;
 
 public class GuessHistory
 {

@@ -1,4 +1,4 @@
-﻿namespace UserInterface;
+﻿namespace BoolPgia;
 
 public class Program
 {

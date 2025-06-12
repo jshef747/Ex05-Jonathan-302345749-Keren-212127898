@@ -1,4 +1,4 @@
-﻿namespace UserInterface
+﻿namespace BoolPgia
 {
     partial class StartScreen
     {
@@ -28,37 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GuessButtom = new Button();
-            StartButtom = new Button();
+            GuessButton = new Button();
+            StartButton = new Button();
             SuspendLayout();
             // 
-            // GuessButtom
+            // GuessButton
             // 
-            GuessButtom.Location = new Point(79, 40);
-            GuessButtom.Name = "GuessButtom";
-            GuessButtom.Size = new Size(561, 65);
-            GuessButtom.TabIndex = 0;
-            GuessButtom.Text = "Number of guesses : 4";
-            GuessButtom.UseVisualStyleBackColor = true;
-            GuessButtom.Click += GuessButtom_Click;
+            GuessButton.Location = new Point(79, 40);
+            GuessButton.Name = "GuessButton";
+            GuessButton.Size = new Size(561, 65);
+            GuessButton.TabIndex = 0;
+            GuessButton.Text = "Number of guesses : 4";
+            GuessButton.UseVisualStyleBackColor = true;
+            GuessButton.Click += GuessButtom_Click;
             // 
-            // StartButtom
+            // StartButton
             // 
-            StartButtom.BackColor = Color.LightGreen;
-            StartButtom.Location = new Point(442, 252);
-            StartButtom.Name = "StartButtom";
-            StartButtom.Size = new Size(198, 59);
-            StartButtom.TabIndex = 1;
-            StartButtom.Text = "Start";
-            StartButtom.UseVisualStyleBackColor = false;
+            StartButton.BackColor = Color.LightGreen;
+            StartButton.Location = new Point(442, 252);
+            StartButton.Name = "StartButton";
+            StartButton.Size = new Size(198, 59);
+            StartButton.TabIndex = 1;
+            StartButton.Text = "Start";
+            StartButton.UseVisualStyleBackColor = false;
+            StartButton.Click += StartButtom_Click;
             // 
             // StartScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(710, 403);
-            Controls.Add(StartButtom);
-            Controls.Add(GuessButtom);
+            Controls.Add(StartButton);
+            Controls.Add(GuessButton);
             Name = "StartScreen";
             Text = "StartScreen";
             ResumeLayout(false);
@@ -66,7 +67,7 @@
 
         #endregion
 
-        private Button GuessButtom;
-        private Button StartButtom;
+        private Button GuessButton;
+        private Button StartButton;
     }
 }

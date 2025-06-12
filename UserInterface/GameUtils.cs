@@ -1,4 +1,4 @@
-﻿namespace Logic;
+﻿namespace BoolPgia;
 
 public static class GameUtils
 {
@@ -11,8 +11,4 @@ public static class GameUtils
     public const string k_No = "N";
     public const int k_MinimumNumberOfGuesses = 4;
     public const int k_MaximumNumberOfGuesses = 10;
-    public const string k_InputInstructions = $"Please type your next guess <A B C D> or "
-                                              + $"'Q' to quit";
-    public const string k_NumberOfGuessesInstructions = $"Please enter the number of guesses or "
-                                                        + $"Q to quit.";
 }
