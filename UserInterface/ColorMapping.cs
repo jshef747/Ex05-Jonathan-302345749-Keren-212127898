@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BoolPgia;
 public class ColorMapping
 {
-    public static readonly Dictionary<char, Color> k_ColorMapping = new Dictionary<char, Color>
+    public static readonly Dictionary<char, Color> sr_KColorMapping = new Dictionary<char, Color>
     {
         { 'A', Color.Chartreuse },
         { 'B', Color.RoyalBlue },

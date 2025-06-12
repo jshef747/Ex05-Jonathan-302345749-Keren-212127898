@@ -9,36 +9,36 @@ namespace BoolPgia;
 
 public class GuessLine
 {
-    public List<Button> guessButtons { get; set; } = new();
+    public List<Button> GuessButtons { get; set; } = new();
 
 
 
-    public GuessLine(int y)
+    public GuessLine(int i_Y)
     {
         for (int i = 0; i < GameUtils.k_NumberOfLettersPerGuess; i++)
         {
-            int buttonSize = GuessScreen.buttonSize;
-            int spcacing = GuessScreen.spcacing;
+            int buttonSize = GuessScreen.m_ButtonSize;
+            int spcacing = GuessScreen.m_Spcacing;
             Button guessButton = new Button();
             guessButton.Size = new Size(buttonSize, buttonSize);
-            guessButton.Location = new Point(GuessScreen.startX + (i * (buttonSize + spcacing)), y);
+            guessButton.Location = new Point(GuessScreen.k_StartX + (i * (buttonSize + spcacing)), i_Y);
             guessButton.BackColor = Color.Gray;
             guessButton.Enabled = false;
-            guessButtons.Add(guessButton);
+            GuessButtons.Add(guessButton);
         }
     }
 
-    public void enableButtons()
+    public void EnableButtons()
     {
-        foreach (Button button in guessButtons)
+        foreach (Button button in GuessButtons)
         {
             button.Enabled = true;
         }
     }
 
-    public void disableButtons()
+    public void DisableButtons()
     {
-        foreach (Button button in guessButtons)
+        foreach (Button button in GuessButtons)
         {
             button.Enabled = false;
         }

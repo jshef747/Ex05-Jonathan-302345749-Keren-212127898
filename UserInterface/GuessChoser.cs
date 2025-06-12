@@ -12,16 +12,16 @@ namespace BoolPgia
 {
     public partial class GuessChoser : Form
     {
-        public Color? m_selectedColor { get; private set; }
+        public Color? m_SelectedColor { get; private set; }
         public GuessChoser()
         {
             InitializeComponent();
         }
 
-        private void GuessButton_Click(object sender, EventArgs e)
+        private void GuessButton_Click(object i_Sender, EventArgs i_E)
         {
-            Button colorButton = sender as Button;
-            m_selectedColor = colorButton.BackColor;
+            Button colorButton = i_Sender as Button;
+            m_SelectedColor = colorButton.BackColor;
             this.Close();
         }
     }

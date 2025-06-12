@@ -40,7 +40,7 @@
             GuessButton.TabIndex = 0;
             GuessButton.Text = "Number of guesses : 4";
             GuessButton.UseVisualStyleBackColor = true;
-            GuessButton.Click += GuessButtom_Click;
+            GuessButton.Click += GuessButton_Click;
             // 
             // StartButton
             // 
@@ -51,7 +51,7 @@
             StartButton.TabIndex = 1;
             StartButton.Text = "Start";
             StartButton.UseVisualStyleBackColor = false;
-            StartButton.Click += StartButtom_Click;
+            StartButton.Click += StartButton_Click;
             // 
             // StartScreen
             // 

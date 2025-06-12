@@ -4,58 +4,58 @@ namespace BoolPgia;
 
 public class GuessScreen : Form
 {
-    public static int buttonSize = 40;
-    public static int spcacing = 10;
-    public const int startX = 20;
-    private const int startY = 20;
+    public static int m_ButtonSize = 40;
+    public static int m_Spcacing = 10;
+    public const int k_StartX = 20;
+    private const int k_StartY = 20;
     private int m_NumberOfGuesses;
-    private int m_currentGuessIndex = 0;
-    private List<Button> indicatorButtons = new ();
-    private List<GuessLine> m_guessLines = new();
+    private int m_CurrentGuessIndex = 0;
+    private List<Button> m_IndicatorButtons = new ();
+    private List<GuessLine> m_GuessLines = new();
     private readonly GameLogic r_GameLogic;
 
     public GuessScreen(int i_NumberOfGuesses)
     {
         m_NumberOfGuesses = i_NumberOfGuesses;
         r_GameLogic = new GameLogic(m_NumberOfGuesses);
-        Initialize();
+        initialize();
     }
 
-    private void Initialize()
+    private void initialize()
     {
         for (int i = 0; i < GameUtils.k_NumberOfLettersPerGuess; i++)
         {
             Button inidicatorButton = new Button();
-            inidicatorButton.Size = new Size(buttonSize, buttonSize);
-            inidicatorButton.Location = new Point(startX + (i * (buttonSize + spcacing)), startY);
+            inidicatorButton.Size = new Size(m_ButtonSize, m_ButtonSize);
+            inidicatorButton.Location = new Point(k_StartX + (i * (m_ButtonSize + m_Spcacing)), k_StartY);
             inidicatorButton.BackColor = Color.Black;
             inidicatorButton.Enabled = false;
-            indicatorButtons.Add(inidicatorButton);
+            m_IndicatorButtons.Add(inidicatorButton);
             this.Controls.Add(inidicatorButton);
         }
 
-        int y = startY + buttonSize + spcacing;
+        int y = k_StartY + m_ButtonSize + m_Spcacing;
 
         for(int line = 0; line < m_NumberOfGuesses; line++)
         {
             GuessLine guessLine = new GuessLine(y);
-            m_guessLines.Add(guessLine);
-            y += buttonSize + spcacing;
+            m_GuessLines.Add(guessLine);
+            y += m_ButtonSize + m_Spcacing;
         }
 
-        m_guessLines[0].enableButtons();
+        m_GuessLines[0].EnableButtons();
 
         addActionToButtons();
 
-        int totalHeight = (buttonSize + spcacing) * m_NumberOfGuesses + startY + buttonSize + spcacing;
+        int totalHeight = (m_ButtonSize + m_Spcacing) * m_NumberOfGuesses + k_StartY + m_ButtonSize + m_Spcacing;
         this.ClientSize = new Size(this.ClientSize.Width, totalHeight);
     }
 
     private void addActionToButtons()
     {
-        foreach(GuessLine line in m_guessLines)
+        foreach(GuessLine line in m_GuessLines)
         {
-            foreach(Button button in line.guessButtons)
+            foreach(Button button in line.GuessButtons)
             {
                 button.Click += GuessButton_Click;
                 this.Controls.Add(button);
@@ -63,23 +63,23 @@ public class GuessScreen : Form
         }
     }
 
-    private void GuessButton_Click(object? sender, EventArgs e)
+    private void GuessButton_Click(object? i_Sender, EventArgs i_E)
     {
         GuessChoser guessChoser = new GuessChoser();
         guessChoser.ShowDialog();
-        if (guessChoser.m_selectedColor.HasValue)
+        if (guessChoser.m_SelectedColor.HasValue)
         {
-            Button clickedButton = sender as Button;
-            clickedButton.BackColor = guessChoser.m_selectedColor.Value;
+            Button? clickedButton = i_Sender as Button;
+            clickedButton!.BackColor = guessChoser.m_SelectedColor.Value;
         }
 
-        if(InputHandler.checkValidLine(m_guessLines[m_currentGuessIndex]))
+        if(InputHandler.CheckValidLine(m_GuessLines[m_CurrentGuessIndex]))
         {
             //TODO: the submit button should be enabled only after a valid guess
 
-            m_guessLines[m_currentGuessIndex].disableButtons();
-            m_currentGuessIndex++;
-            m_guessLines[m_currentGuessIndex].enableButtons();
+            m_GuessLines[m_CurrentGuessIndex].DisableButtons();
+            m_CurrentGuessIndex++;
+            m_GuessLines[m_CurrentGuessIndex].EnableButtons();
         }
     }
 }
