@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace BoolPgia;
 public class ColorMapping
 {
-    public static readonly Dictionary<char, Color> sr_KColorMapping = new Dictionary<char, Color>
-    {
-        { 'A', Color.Chartreuse },
-        { 'B', Color.RoyalBlue },
-        { 'C', Color.Crimson },
-        { 'D', Color.DeepPink },
-        { 'E', Color.Plum },
-        { 'F', Color.LightSkyBlue },
-        { 'G', Color.LightSeaGreen },
-        { 'H', Color.Purple }
-    };
+    public static readonly Dictionary<Color, char> sr_KColorMapping = new Dictionary<Color, char> 
+                                                                          {
+                                                                              { Color.Chartreuse, 'A' },
+                                                                              { Color.RoyalBlue, 'B' },
+                                                                              { Color.Crimson, 'C' },
+                                                                              { Color.DeepPink, 'D' },
+                                                                              { Color.Plum, 'E' },
+                                                                              { Color.LightSkyBlue, 'F' },
+                                                                              { Color.LightSeaGreen, 'G' },
+                                                                              { Color.Purple, 'H' }
+                                                                          };
 }

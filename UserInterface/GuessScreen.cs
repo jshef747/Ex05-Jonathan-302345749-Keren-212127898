@@ -73,13 +73,29 @@ public class GuessScreen : Form
             clickedButton!.BackColor = guessChoser.m_SelectedColor.Value;
         }
 
-        if(InputHandler.CheckValidLine(m_GuessLines[m_CurrentGuessIndex]))
-        {
-            //TODO: the submit button should be enabled only after a valid guess
+        moveToNextLineIfCan();
+    }
 
-            m_GuessLines[m_CurrentGuessIndex].DisableButtons();
-            m_CurrentGuessIndex++;
-            m_GuessLines[m_CurrentGuessIndex].EnableButtons();
+    private void moveToNextLineIfCan()
+    {
+        int chosenCount = 0;
+
+        foreach(Button guessButton in m_GuessLines[m_CurrentGuessIndex].GuessButtons)
+        {
+            if(guessButton.BackColor != GuessLine.m_IntialColor)
+            {
+                chosenCount++;
+            }
+        }
+
+        if(chosenCount == GameUtils.k_NumberOfLettersPerGuess)
+        {
+            if(InputHandler.CheckValidLine(m_GuessLines[m_CurrentGuessIndex]))
+            {
+                m_GuessLines[m_CurrentGuessIndex].DisableButtons();
+                m_CurrentGuessIndex++;
+                m_GuessLines[m_CurrentGuessIndex].EnableButtons();
+            }
         }
     }
 }

@@ -10,9 +10,7 @@ namespace BoolPgia;
 public class GuessLine
 {
     public List<Button> GuessButtons { get; set; } = new();
-
-
-
+    public static Color m_IntialColor = Color.Gray;
     public GuessLine(int i_Y)
     {
         for (int i = 0; i < GameUtils.k_NumberOfLettersPerGuess; i++)
@@ -22,7 +20,7 @@ public class GuessLine
             Button guessButton = new Button();
             guessButton.Size = new Size(buttonSize, buttonSize);
             guessButton.Location = new Point(GuessScreen.k_StartX + (i * (buttonSize + spcacing)), i_Y);
-            guessButton.BackColor = Color.Gray;
+            guessButton.BackColor = m_IntialColor;
             guessButton.Enabled = false;
             GuessButtons.Add(guessButton);
         }
