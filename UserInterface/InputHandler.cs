@@ -20,6 +20,6 @@ public static class InputHandler
             }
         }
 
-        return (numberOfColors == 4);
+        return (numberOfColors == GameUtils.k_NumberOfLettersPerGuess);
     }
 }

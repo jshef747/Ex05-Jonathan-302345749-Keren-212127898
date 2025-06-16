@@ -7,7 +7,7 @@ public class GameLogic
     private readonly RandomGameWord r_RandomGameWord;
     private readonly GuessHistory r_MGuessHistory;
     public int NumberOfGuesses { get; set; }
-    private int NumberOfv { get; set; }
+    private int NumberOfV { get; set; }
 
     public enum eGameStateIndicator
     {
@@ -64,6 +64,11 @@ public class GameLogic
         r_MGuessHistory.Reset();
     }
 
+    public string? GetResult()
+    {
+        return r_RandomGameWord.RandomWord;
+    }
+
     public bool PlayAgainOrNot(string i_PlayAgain)
     {
         bool willPlayAgain = false;
@@ -77,12 +82,12 @@ public class GameLogic
         return willPlayAgain;
     }
 
-    public void GenerateGuessFeedback(string i_Guess)
+    public List<int> GenerateGuessFeedback(string i_Guess)
     {
         string guessFeedback = "";
         int numberOfX = countHitsAndMisplaced(i_Guess);
 
-        for (int i = 0; i < NumberOfv; i++)
+        for (int i = 0; i < NumberOfV; i++)
         {
             guessFeedback += k_HitAndSameIndex;
         }
@@ -94,11 +99,13 @@ public class GameLogic
 
         r_MGuessHistory.AddGuess(i_Guess);
         r_MGuessHistory.AddFeedback(guessFeedback);
+
+        return [NumberOfV, numberOfX];
     }
 
     private int countHitsAndMisplaced(string i_Guess)
     {
-        NumberOfv = 0;
+        NumberOfV = 0;
         int numberOfX = 0;
 
         foreach (char letter in i_Guess)
@@ -108,7 +115,7 @@ public class GameLogic
                 if (r_RandomGameWord.RandomWord.Contains(letter)
                     && r_RandomGameWord.RandomWord.IndexOf(letter) == i_Guess.IndexOf(letter))
                 {
-                    NumberOfv++;
+                    NumberOfV++;
                 }
                 else if (r_RandomGameWord.RandomWord.Contains(letter))
                 {
@@ -124,7 +131,7 @@ public class GameLogic
     {
         eGameStateIndicator gameStateIndicator;
 
-        if (NumberOfv == GameUtils.k_NumberOfLettersPerGuess)
+        if (NumberOfV == GameUtils.k_NumberOfLettersPerGuess)
         {
             gameStateIndicator = eGameStateIndicator.Won;
         }

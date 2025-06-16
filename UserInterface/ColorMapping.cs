@@ -19,4 +19,7 @@ public class ColorMapping
                                                                               { Color.LightSeaGreen, 'G' },
                                                                               { Color.Purple, 'H' }
                                                                           };
+    public static readonly Dictionary<char, Color> sr_KCharToColorMapping =
+    sr_KColorMapping.ToDictionary(pair => pair.Value, pair => pair.Key);
+
 }
