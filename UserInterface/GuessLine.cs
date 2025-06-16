@@ -91,15 +91,16 @@ public class GuessLine
 
     public void ColorResult(List<int> i_NumberOfVAndX)
     {
-        int index = 0;
-        for(; index < i_NumberOfVAndX[0]; index++)
+        int buttonIndex = 0;
+
+        for(int i = 0; i < i_NumberOfVAndX[0]; i++, buttonIndex++)
         {
-            ResultButtons[index].BackColor = Color.Black;
+            ResultButtons[buttonIndex].BackColor = Color.Black;
         }
         
-        for(; index < i_NumberOfVAndX[1]; index++)
+        for(int i = 0; i < i_NumberOfVAndX[1]; i++, buttonIndex++)
         {
-            ResultButtons[index].BackColor = Color.Yellow;
+            ResultButtons[buttonIndex].BackColor = Color.Yellow;
         }
     }
 }

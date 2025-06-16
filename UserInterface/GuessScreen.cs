@@ -81,15 +81,19 @@ public class GuessScreen : Form
 
         List<int> numberOfVAndX = r_GameLogic.GenerateGuessFeedback(guessInString);
         m_GuessLines[m_CurrentGuessIndex].ColorResult(numberOfVAndX);
+        m_GuessLines[m_CurrentGuessIndex].DisableGuessAndArrowButtons();
+        m_CurrentGuessIndex++;
+
         if (numberOfVAndX[0] == GameUtils.k_NumberOfLettersPerGuess)
         {
             //WON
             showResult();
+            if (m_CurrentGuessIndex < m_NumberOfGuesses)
+            {
+                m_GuessLines[m_CurrentGuessIndex].DisableGuessAndArrowButtons();
+            }
         }
-
-        m_GuessLines[m_CurrentGuessIndex].DisableGuessAndArrowButtons();
-        m_CurrentGuessIndex++;
-        if (m_CurrentGuessIndex < m_NumberOfGuesses)
+        else if (m_CurrentGuessIndex < m_NumberOfGuesses)
         {
             m_GuessLines[m_CurrentGuessIndex].EnableGuessButtons();
         }
