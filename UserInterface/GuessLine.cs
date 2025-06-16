@@ -68,14 +68,12 @@ public class GuessLine
         }
     }
 
-    public void DisableGuessAndArrowButtons()
+    public void DisableGuessButtons()
     {
         foreach (Button button in GuessButtons)
         {
             button.Enabled = false;
         }
-
-        ArrowButton.Enabled = false;
     }
 
     public int GetLineLength()
