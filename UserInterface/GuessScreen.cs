@@ -14,6 +14,9 @@ public class GuessScreen : Form
 
     public GuessScreen(int i_NumberOfGuesses)
     {
+        this.MinimizeBox = false;
+        this.MaximizeBox = false;
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
         m_NumberOfGuesses = i_NumberOfGuesses;
         r_GameLogic = new GameLogic(m_NumberOfGuesses);
         initialize();
