@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BoolPgia;
+﻿namespace BoolPgia;
 public class ColorMapping
 {
     public static readonly Dictionary<Color, char> sr_KColorMapping = new Dictionary<Color, char> 
@@ -21,5 +14,4 @@ public class ColorMapping
                                                                           };
     public static readonly Dictionary<char, Color> sr_KCharToColorMapping =
     sr_KColorMapping.ToDictionary(pair => pair.Value, pair => pair.Key);
-
 }

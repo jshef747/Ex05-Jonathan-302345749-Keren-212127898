@@ -1,6 +1,4 @@
-﻿using static System.Windows.Forms.AxHost;
-
-namespace BoolPgia;
+﻿namespace BoolPgia;
 
 public class GuessScreen : Form
 {
@@ -132,7 +130,7 @@ public class GuessScreen : Form
 
     private void GuessButton_Click(object? i_Sender, EventArgs i_E)
     {
-        GuessChoser guessChoser = new GuessChoser();
+        GuessMenu guessChoser = new GuessMenu();
         guessChoser.ShowDialog();
         if (guessChoser.m_SelectedColor.HasValue)
         {
@@ -149,7 +147,7 @@ public class GuessScreen : Form
 
         foreach(Button guessButton in m_GuessLines[m_CurrentGuessIndex].GuessButtons)
         {
-            if(guessButton.BackColor != GuessLine.m_IntialColor)
+            if(guessButton.BackColor != GuessLine.k_InitialColor)
             {
                 chosenCount++;
             }

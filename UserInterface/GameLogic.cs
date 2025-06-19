@@ -34,7 +34,7 @@ public class GameLogic
 
         private void generateRandomWord()
         {
-            string randomWordToBuild = "";
+            string randomWordToBuild = string.Empty;
 
             while (randomWordToBuild.Length < GameUtils.k_NumberOfLettersPerGuess)
             {
