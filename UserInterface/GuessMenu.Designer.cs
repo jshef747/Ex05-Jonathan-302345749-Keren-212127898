@@ -15,6 +15,9 @@ partial class GuessMenu
         AutoScaleDimensions = new SizeF(k_AutoScaleWidth, k_AutoScaleHeight);
         ClientSize = new Size(k_FormWidth, k_FormHeight);
         AutoScaleMode = AutoScaleMode.Font;
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+        MinimizeBox = false;
         ResumeLayout(false);
     }
 }

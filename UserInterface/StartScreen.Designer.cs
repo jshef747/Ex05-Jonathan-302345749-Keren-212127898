@@ -12,6 +12,9 @@ partial class StartScreen
         ClientSize = new Size(800, 400);
         Name = "StartScreen";
         Text = "StartScreen";
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+        MinimizeBox = false;
         ResumeLayout(false);
     }
 }

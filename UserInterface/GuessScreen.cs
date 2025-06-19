@@ -6,10 +6,10 @@ public class GuessScreen : Form
     public static int m_Spcacing = 10;
     public const int k_StartX = 20;
     private const int k_StartY = 20;
-    private int m_NumberOfGuesses;
+    private readonly int r_NumberOfGuesses;
     private int m_CurrentGuessIndex = 0;
-    private List<Button> m_IndicatorButtons = new ();
-    private List<GuessLine> m_GuessLines = new();
+    private readonly List<Button> r_IndicatorButtons = new ();
+    private readonly List<GuessLine> r_GuessLines = new();
     private readonly GameLogic r_GameLogic;
 
     public GuessScreen(int i_NumberOfGuesses)
@@ -17,8 +17,9 @@ public class GuessScreen : Form
         this.MinimizeBox = false;
         this.MaximizeBox = false;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
-        m_NumberOfGuesses = i_NumberOfGuesses;
-        r_GameLogic = new GameLogic(m_NumberOfGuesses);
+        r_NumberOfGuesses = i_NumberOfGuesses;
+        r_GameLogic = new GameLogic(r_NumberOfGuesses);
+
         initialize();
     }
 
@@ -31,30 +32,32 @@ public class GuessScreen : Form
             inidicatorButton.Location = new Point(k_StartX + (i * (m_ButtonSize + m_Spcacing)), k_StartY);
             inidicatorButton.BackColor = Color.Black;
             inidicatorButton.Enabled = false;
-            m_IndicatorButtons.Add(inidicatorButton);
+
+            r_IndicatorButtons.Add(inidicatorButton);
             this.Controls.Add(inidicatorButton);
         }
 
         int y = k_StartY + m_ButtonSize + m_Spcacing;
 
-        for(int line = 0; line < m_NumberOfGuesses; line++)
+        for(int line = 0; line < r_NumberOfGuesses; line++)
         {
             GuessLine guessLine = new GuessLine(y);
-            m_GuessLines.Add(guessLine);
+
+            r_GuessLines.Add(guessLine);
             y += m_ButtonSize + m_Spcacing;
         }
 
-        m_GuessLines[0].EnableGuessButtons();
+        r_GuessLines[0].EnableGuessButtons();
 
         addActionToButtons();
 
-        int totalHeight = (m_ButtonSize + m_Spcacing) * m_NumberOfGuesses + k_StartY + m_ButtonSize + m_Spcacing;
-        this.ClientSize = new Size(m_GuessLines[0].GetLineLength(), totalHeight);
+        int totalHeight = (m_ButtonSize + m_Spcacing) * r_NumberOfGuesses + k_StartY + m_ButtonSize + m_Spcacing;
+        this.ClientSize = new Size(r_GuessLines[0].GetLineLength(), totalHeight);
     }
 
     private void addActionToButtons()
     {
-        foreach(GuessLine line in m_GuessLines)
+        foreach(GuessLine line in r_GuessLines)
         {
             foreach(Button button in line.GuessButtons)
             {
@@ -64,6 +67,7 @@ public class GuessScreen : Form
 
             line.ArrowButton.Click += ArrowButton_Click;
             this.Controls.Add(line.ArrowButton);
+
             foreach (Button button in line.ResultButtons)
             {
                 this.Controls.Add(button);
@@ -75,30 +79,32 @@ public class GuessScreen : Form
     {
         string guessInString = string.Empty;
 
-        foreach (Button button in m_GuessLines[m_CurrentGuessIndex].GuessButtons)
+        foreach (Button button in r_GuessLines[m_CurrentGuessIndex].GuessButtons)
         {
             guessInString += ColorMapping.sr_KColorMapping[button.BackColor];
         }
 
         List<int> numberOfVAndX = r_GameLogic.GenerateGuessFeedback(guessInString);
-        m_GuessLines[m_CurrentGuessIndex].ColorResult(numberOfVAndX);
+        r_GuessLines[m_CurrentGuessIndex].ColorResult(numberOfVAndX);
 
         (i_Sender as Button).Enabled = false;
-        m_GuessLines[m_CurrentGuessIndex].DisableGuessButtons();
+
+        r_GuessLines[m_CurrentGuessIndex].DisableGuessButtons();
         m_CurrentGuessIndex++;
 
         if (numberOfVAndX[0] == GameUtils.k_NumberOfLettersPerGuess)
         {
             //WON
             showResult();
-            if (m_CurrentGuessIndex < m_NumberOfGuesses)
+
+            if (m_CurrentGuessIndex < r_NumberOfGuesses)
             {
-                m_GuessLines[m_CurrentGuessIndex].DisableGuessButtons();
+                r_GuessLines[m_CurrentGuessIndex].DisableGuessButtons();
             }
         }
-        else if (m_CurrentGuessIndex < m_NumberOfGuesses)
+        else if (m_CurrentGuessIndex < r_NumberOfGuesses)
         {
-            m_GuessLines[m_CurrentGuessIndex].EnableGuessButtons();
+            r_GuessLines[m_CurrentGuessIndex].EnableGuessButtons();
         }
         else
         {
@@ -115,7 +121,7 @@ public class GuessScreen : Form
         {
             int index = 0;
 
-            foreach (Button button in m_IndicatorButtons)
+            foreach (Button button in r_IndicatorButtons)
             {
                 char letter = result[index++];
 
@@ -135,20 +141,21 @@ public class GuessScreen : Form
     {
         GuessMenu guessChoser = new GuessMenu();
         guessChoser.ShowDialog();
+
         if (guessChoser.m_SelectedColor.HasValue)
         {
             Button? clickedButton = i_Sender as Button;
             clickedButton!.BackColor = guessChoser.m_SelectedColor.Value;
         }
 
-        moveToNextLineIfCan();
+        enableArrowButtonIfCan();
     }
 
-    private void moveToNextLineIfCan()
+    private void enableArrowButtonIfCan()
     {
         int chosenCount = 0;
 
-        foreach(Button guessButton in m_GuessLines[m_CurrentGuessIndex].GuessButtons)
+        foreach(Button guessButton in r_GuessLines[m_CurrentGuessIndex].GuessButtons)
         {
             if(guessButton.BackColor != GuessLine.k_InitialColor)
             {
@@ -158,9 +165,9 @@ public class GuessScreen : Form
 
         if(chosenCount == GameUtils.k_NumberOfLettersPerGuess)
         {
-            if(InputHandler.CheckValidLine(m_GuessLines[m_CurrentGuessIndex]))
+            if(InputHandler.CheckValidLine(r_GuessLines[m_CurrentGuessIndex]))
             {
-                m_GuessLines[m_CurrentGuessIndex].EnableArrowButton();
+                r_GuessLines[m_CurrentGuessIndex].EnableArrowButton();
             }
         }
     }
