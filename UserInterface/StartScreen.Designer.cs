@@ -64,6 +64,8 @@ partial class StartScreen
         MaximizeBox = false;
         MinimizeBox = false;
         Name = "StartScreen";
+        ShowIcon = false;
+        ShowInTaskbar = false;
         Text = "StartScreen";
         ResumeLayout(false);
     }

@@ -14,9 +14,10 @@ public class GuessScreen : Form
 
     public GuessScreen(int i_NumberOfGuesses)
     {
-        this.MinimizeBox = false;
         this.MaximizeBox = false;
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.ShowIcon = false;
+        this.Text = "Guess Screen";
         r_NumberOfGuesses = i_NumberOfGuesses;
         r_GameLogic = new GameLogic(r_NumberOfGuesses);
 
@@ -139,7 +140,7 @@ public class GuessScreen : Form
 
     private void GuessButton_Click(object? i_Sender, EventArgs i_E)
     {
-        GuessMenu guessChoser = new GuessMenu();
+        ColorChoser guessChoser = new ColorChoser();
         guessChoser.ShowDialog();
 
         if (guessChoser.m_SelectedColor.HasValue)

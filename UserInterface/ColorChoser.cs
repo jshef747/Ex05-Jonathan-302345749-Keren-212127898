@@ -1,8 +1,8 @@
 ﻿namespace BoolPgia;
-public partial class GuessMenu : Form
+public partial class ColorChoser : Form
 {
     public Color? m_SelectedColor { get; private set; }
-    public GuessMenu()
+    public ColorChoser()
     {
         InitializeComponent();
     }

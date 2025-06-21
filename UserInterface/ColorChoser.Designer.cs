@@ -4,7 +4,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace BoolPgia;
 
-partial class GuessMenu
+partial class ColorChoser
 {
     /// <summary>
     /// Required designer variable.
@@ -122,7 +122,7 @@ partial class GuessMenu
         GuessButton5.UseVisualStyleBackColor = false;
         GuessButton5.Click += GuessButton_Click;
         // 
-        // GuessChoser
+        // ColorChoser
         // 
         AutoScaleDimensions = new SizeF(13F, 32F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -138,9 +138,10 @@ partial class GuessMenu
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         MinimizeBox = false;
-        Name = "GuessChoser";
+        Name = "ColorChoser";
         ShowIcon = false;
-        Text = "GuessChoser";
+        ShowInTaskbar = false;
+        Text = "Color Choser";
         ResumeLayout(false);
     }
 

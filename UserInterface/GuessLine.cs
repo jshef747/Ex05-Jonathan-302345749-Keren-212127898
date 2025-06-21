@@ -66,7 +66,9 @@ public class GuessLine
             int resultButtonSize = GuessScreen.m_ButtonSize / 3;
             int col = i % k_ResultButtonsPerRow;
             int row = i / k_ResultButtonsPerRow;
-            int resultButtonXLoaction = ArrowButton.Location.X + ArrowButton.Width + (col * (resultButtonSize + k_ResultSpacing));
+            int resultButtonXLoaction = ArrowButton.Location.X + ArrowButton.Width
+                                                               + (col * (resultButtonSize + k_ResultSpacing))
+                                                               + k_ResultSpacing;
             int resultButtonYLoaction = i_Ylocation + (row * (resultButtonSize + k_ResultSpacing));
 
             ResultButtons.Add(createButton(resultButtonXLoaction, resultButtonYLoaction, resultButtonSize, resultButtonSize, k_ResultEmptyColor));
