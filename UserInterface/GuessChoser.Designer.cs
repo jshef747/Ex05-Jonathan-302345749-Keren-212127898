@@ -131,7 +131,11 @@
             Controls.Add(GuessButton3);
             Controls.Add(GuessButton2);
             Controls.Add(GuessButton);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "GuessChoser";
+            ShowIcon = false;
             Text = "GuessChoser";
             ResumeLayout(false);
         }

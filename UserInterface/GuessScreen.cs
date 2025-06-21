@@ -18,6 +18,8 @@ public class GuessScreen : Form
     {
         m_NumberOfGuesses = i_NumberOfGuesses;
         r_GameLogic = new GameLogic(m_NumberOfGuesses);
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.MaximizeBox = false;
         initialize();
     }
 
@@ -67,6 +69,7 @@ public class GuessScreen : Form
     {
         GuessChoser guessChoser = new GuessChoser();
         guessChoser.ShowDialog();
+
         if (guessChoser.m_SelectedColor.HasValue)
         {
             Button? clickedButton = i_Sender as Button;

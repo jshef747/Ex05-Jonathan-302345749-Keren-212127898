@@ -60,6 +60,9 @@
             ClientSize = new Size(710, 403);
             Controls.Add(StartButton);
             Controls.Add(GuessButton);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "StartScreen";
             Text = "StartScreen";
             ResumeLayout(false);
